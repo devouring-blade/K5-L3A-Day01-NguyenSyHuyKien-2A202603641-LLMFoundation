@@ -1,8 +1,8 @@
 # Báo cáo cá nhân — Day 01: Lọc tin nhắn rác bằng ML, DL, Embedding và LLM
 
 - **MSSV:** 2A202603641
-- **Họ và tên:** [HỌ TÊN CỦA BẠN]
-- **SEED** (in ở ô đầu notebook): [SỐ SEED]
+- **Họ và tên:** Nguyễn Sỹ Huy Kiên
+- **SEED** (in ở ô đầu notebook): 8911
 
 ## 1. Bằng chứng
 
@@ -39,9 +39,10 @@ BoW + LogReg tụt nhiều nhất: F1 từ 0.824 (SUB) xuống 0.286 trên 50 ca
 
 Nhóm khó nhất với BoW là spam giọng tự nhiên (0% và 10%), né từ khoá (17% và 0%) và thao túng/lừa đảo (12% và 38%). Với encoder là spam giọng tự nhiên (30–40%), thao túng với 3b/3c (25%) và nói về spam (50% với 3a/3b).
 
-Hai case cụ thể:
-- **[Case 1 — chép từ ô "Đọc lỗi" trong notebook]:** BoW sai vì chỉ cộng trọng số từng từ có trong từ điển 2.000 từ; tin không có từ khoá quen thuộc nên không có gì kéo điểm về spam.
-- **[Case 2 — chép từ ô "Đọc lỗi"]:** encoder sai vì vector nghĩa của câu này gần với tin đời thường (hoặc câu cảnh báo về spam gần với spam thật), và bộ phân loại tuyến tính không tách được.
+Hai case cụ thể (lấy từ thí nghiệm 3.B, các tin né từ khoá do notebook đưa ra):
+
+- **Tin "Exclusive: get a brand new phone at no cost, just reply..." (thật = spam):** BoW đoán ham vì tin không chứa từ khoá quen thuộc như "free", "win", "call". BoW chỉ cộng trọng số từng từ trong từ điển 2.000 từ nên không có gì kéo điểm về spam, và không hiểu "no cost" cùng nghĩa với "free".
+- **Tin "Your mobile number has been chosen for a complimentary holiday..." (thật = spam):** Encoder + LogReg đoán ham. Vector nghĩa của câu này nằm gần vùng tin đời thường hơn vùng spam, và bộ phân loại tuyến tính chưa đủ tách các câu spam viết "mượt" như vậy.
 
 ## 5. Thử thách cá nhân
 
