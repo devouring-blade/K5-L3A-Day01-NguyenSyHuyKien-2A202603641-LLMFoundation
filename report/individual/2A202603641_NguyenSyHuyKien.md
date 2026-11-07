@@ -71,7 +71,7 @@ Chi phí LLM theo bảng: LLM nhỏ $0.006/1k tin, tức khoảng $60/ngày (~$1
 
 | Phần | Bạn hỏi AI gì (prompt) | AI trả lời/viết gì | Bạn đã sửa / kiểm chứng gì |
 | --- | --- | --- | --- |
-| 1 | Nhờ chỉ lỗi và giải thích `vectorize` (TODO 1.1) | Chỉ ra thiếu kiểm tra `if w in vocab` (KeyError với từ lạ) và đưa bản sửa | Tự viết bản đầu, sửa theo, chạy ô kiểm tra ra ✅ |
+| 1 | Nhờ chỉ lỗi và giải thích `vectorize` (TODO 1.1) | Chỉ ra thiếu kiểm tra `if w in vocab` (KeyError với từ lạ) và đưa bản sửa | Tự viết bản đầu, sửa theo, chạy ô kiểm tra ra  |
 | 2–3 | Nhờ nhận xét code `build_mlp`, `train_mlp`, `cosine_similarity` và gợi ý cách làm `top_k_similar`, `knn_predict` | Xác nhận code đúng; giải thích hướng chuẩn hoá + nhân ma trận, chỉ lỗi `argmax` phải là `argsort` | Tự viết code, sửa `argmax` thành `argsort`, chạy lại ô kiểm tra |
 | 4 | Nhờ viết `llm_classify_batch` | Vòng lặp gọi API qua `retry_with_backoff`, đếm `n_invalid`, ước tính token và USD | Kiểm tra chỉ chạy trên 40 tin SUB, `None` tính vào `n_invalid` |
 | 4 | Debug F1 = 0, `invalid=40` | Hướng dẫn in phản hồi thô; phát hiện giới hạn 3 token làm câu trả lời rỗng | Tự chạy kiểm tra (3 token rỗng, 20 token ra "spam"), tăng `max_tokens` OpenAI lên 10, chạy lại thì invalid = 0 |
